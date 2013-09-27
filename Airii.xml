@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Component xmlns="http://www.red5studios.com/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.red5studios.com/ ../../../../schemas/component.xsd">
+	<Info
+		title="Airii"
+		author="Arkii"
+		description="Displays information about dropships at the landing pads"
+		url="http://www.red5studios.com/"
+		uiVersion="1000"
+	/>
+
+	<Events>
+		<Event name="ON_COMPONENT_LOAD"				bind="OnComponentLoad"/>
+		<Event name="ON_PLAYER_READY"				bind="OnPlayerReady"/>
+		<Event name="ON_UI_ENTITY_AVAILABLE"		bind="OnEntityCheck"/>
+		<Event name="ON_UI_ENTITY_LOST"				bind="OnEntityLost"/>
+		<Event name="ON_EXIT_ZONE"					bind="OnExitZone"/>
+		<Event name="ON_ENTER_ZONE"					bind="OnEnterZone"/>
+	</Events>
+	
+	<Meshes>
+		<Mesh name="PanelMesh" src="./objs/Panel.r5a"/>
+		<Mesh name="PanelAirii" src="./objs/Panel_Airii.r5a"/>
+		<Mesh name="PanelScanlinesOpen" src="./objs/Panel_Scanlines_Open.r5a"/>
+		<Mesh name="PanelScanlinesClosed" src="./objs/Panel_Scanlines_Closed.r5a"/>
+	</Meshes>
+
+	<Textures>
+		<Texture name="PanelTex" src="./imgs/Panel.dds" premultiplied="false">
+			<Region name="Airii" top="289" left="37" right="500" bottom="387" />
+			<Region name="AiriiSlants" top="397" left="0" right="512" bottom="496" />
+			<Region name="ScanLines" top="0" left="508" right="512" bottom="256" />
+		</Texture>
+		<Texture name="MapMarker" src="./imgs/MapMarker.png" premultiplied="false"></Texture>
+		<Texture name="optsLogo" src="./imgs/Logo.png" premultiplied="false"></Texture>
+	</Textures>
+	
+	<Styles>
+		<StyleSheet name="ArriveDepartHeader">  
+			font:Bold_19;
+			halign:center;
+			valign:middle;
+			color:FFFFFF;
+			scaleX:1;
+			scaleY:1";
+		</StyleSheet>
+		<StyleSheet name="Entry">  
+			font:UbuntuMedium_12;
+			halign:left;
+			valign:middle;
+			color:FFFFFF;
+			scaleX:1;
+			scaleY:1";
+			clip-children:true;
+		</StyleSheet>
+		<StyleSheet name="Header" parent="Entry">
+			font:Demi_17;
+			halign:center;
+		</StyleSheet>
+	</Styles>
+	
+	<BluePrints>
+		<BluePrint name="ArriveDepartHeader" instantiable="true">
+			<StillArt dimensions="dock:fill" style="texture:colors; region:white; tint:#000000; alpha:0.85;"/>
+			<Text name="text" dimensions="dock:fill;" class="ArriveDepartHeader"/>
+		</BluePrint>
+		
+		<BluePrint name="Header" instantiable="true">
+			<StillArt dimensions="top:0; left:0; width:100%-150; height:100%;" style="texture:colors; region:white; tint:#000000; alpha:0.75;"/>
+			<StillArt dimensions="top:0; left:100%-147; width:147; height:100%;" style="texture:colors; region:white; tint:#000000; alpha:0.75;"/>
+			<Text name="route" dimensions="top:0; left:0; width:100%-150; height:100%;" class="Header"/>
+			<Text name="eta" dimensions="top:0; left:100%-150; width:147; height:100%;" class="Header"/>
+		</BluePrint>
+		
+		<BluePrint name="Entry" instantiable="true">
+			<StillArt dimensions="top:2; left:0; width:100%-150; height:100%;" style="texture:colors; region:white; tint:#000000; alpha:0.5;"/>
+			<StillArt dimensions="top:2; left:100%-147; width:150; height:100%;" style="texture:colors; region:white; tint:#000000; alpha:0.5;"/>
+			<Text name="route" dimensions="top:2; left:3; width:100%-153; height:100%;" class="Entry"/>
+			<Text name="eta" dimensions="top:2; left:100%-150; width:147; height:100%;" class="Entry" style="halign:center;"/>
+		</BluePrint>		
+	</BluePrints>
+
+	<Frames>
+
+	</Frames>
+
+</Component>

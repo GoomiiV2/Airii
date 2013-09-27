@@ -1,0 +1,19 @@
+-== V1.3 ==-
+- Adjusted the position of the panel near the printer in Sunken Harbor. Some world builder poked a wall through the panel. *shakes fist*
+- Added an option to toggle the animation of the scanlines.
+- Added optional map markers for each panels position.
+- Added a logo to the options menu that will link to the forum post.
+
+-==== V1.2 ====-
+- Fixed the issues with the panels sometimes not opening. (for real this time)
+
+-==== V1.1 ====-
+- Added customization options, enable/disable scan-lines, shading and color editing.
+- Adjusted the position of the panel at Hydro-Core.
+- Added more panel positions at the printers.
+- Added the option to disable the extra panels if you so wish.
+- Added option to adjust the open range of the panels.
+- Hopefully fixed the issue of the panels sometimes not opening/displaying. (hard to know for sure when I can't reproduce the bug >,>)
+- Hopefully fixed the rare issue of multiple ships on the one line.
+- Cleaned up some of the meshes that weren't quite right.
+- Some small tidy ups.
