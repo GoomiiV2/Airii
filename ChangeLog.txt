@@ -1,3 +1,11 @@
+-== V1.4 ==-
+- Moved the panels at the copa and SH printer. A world bulider moved the whole printer to spite me D:
+	- Commenced Operation Transatlantic Evil Glare directed at said world builder.
+		- Operation Transatlantic Evil Glare has casue coletral damage, the janitor may have been hit :<
+- Fixed a error in the Lokii lib prevent web updates.
+- Added an option to adjust the scale of the panels.
+- Now Bi-Lingual, Added German translation from Toshamaru :D
+
 -== V1.3 ==-
 - Adjusted the position of the panel near the printer in Sunken Harbor. Some world builder poked a wall through the panel. *shakes fist*
 - Added an option to toggle the animation of the scanlines.

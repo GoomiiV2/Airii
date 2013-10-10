@@ -40,6 +40,8 @@ local SHORT_NAMES =
 MAX_DESTINATIONS = 10;
 HAS_LANDED_RANGE = 10;
 AVG_DROPSHIP_SPEED = 45; -- If not useing a calculated speed, Sligly faster than the top speed to allow for the flight paths
+PANEL_SCALE_MAX = 10;
+PANEL_HALF_WIDTH = 0.10;
 
 --=====================
 --		Varables     --
@@ -58,6 +60,7 @@ FREINDLY_COLOR = "00e43b";
 HOSTILE_COLOR = "de2a2a";
 SEPARATOR_COLOR = "e6e6e6";
 local PanelOpenRange = 5;
+local PanelScale = 1;
 local PanelPositions = {};
 local MapMarkers = {};
 local EnablePrinterPanels = true;
@@ -70,6 +73,7 @@ function OnComponentLoad()
 	InterfaceOptions.SetCallbackFunc(UIHELPER.CheckCallbacks, ADDONNAME);
 	
 	Lokii.AddLang("en", "./lang/EN");
+	Lokii.AddLang("de", "./lang/DE");
 	Lokii.SetBaseLang("en");
 	Lokii.SetToLocale();
 		
@@ -137,10 +141,19 @@ function CreatePanels()
 	for i, v in pairs(PanelPositions) do
 		panels[index] = {};
 		panels[index].POI = tostring(i);
+
+		-- Set the panels scale, There has to be a nicer way to update these :/
+		PANEL[3].Scale = 3 + PanelScale;
+
+		-- Messy but it's cold and late ;^;
+		local pos = Game.ChunkCoordToWorld(unpack(v.Translation));
+		if (PanelScale > 1) then
+			pos.z = pos.z + (PANEL_HALF_WIDTH * PanelScale);
+		end
+
 		panels[index].Panel = LKObjects.Create(PANEL);
-		panels[index].Panel.pos:SetParam("Translation", Game.ChunkCoordToWorld(unpack(v.Translation)));
+		panels[index].Panel.pos:SetParam("Translation", pos);
 		panels[index].Panel.pos:SetParam("Rotation", v.Rotation);
-		
 		index = index + 1;
 	end
 	RenderTarget = panels[1].Panel.panel_rt;
@@ -352,6 +365,11 @@ function BuildPositionTable()
 	PlaceMapMarkers();
 end
 
+function ScalePanels()
+	RemovePanels();
+	CreatePanels();
+end
+
 function PlaceMapMarkers()
 	for k,v in pairs(MapMarkers) do		
 		MapMarkers[k]:Destroy();
@@ -405,6 +423,12 @@ function CreateInterfaceOptions()
 	UIHELPER.AddUICallback("DROPSHIP_MAP_MARKERS", function(args)
 		EnableMapMarkers = args;
 		PlaceMapMarkers();
+	end);
+
+	InterfaceOptions.AddSlider({id="PANELSCALE", label=Lokii.GetString("PANELSCALE_LBL"), tooltip=Lokii.GetString("PANELSCALE_TT"), default=PanelScale, min=1, max=PANEL_SCALE_MAX, inc=0.25});
+	UIHELPER.AddUICallback("PANELSCALE", function(args)
+		PanelScale = args;
+		ScalePanels();
 	end);
 	
 	InterfaceOptions.StopGroup();
