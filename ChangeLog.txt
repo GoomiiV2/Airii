@@ -1,3 +1,7 @@
+-== V1.5 ==-
+- Moved the panels at the Arclight fragment base down.
+- Moved the panel at the Thump Gump printer across.
+
 -== V1.4 ==-
 - Moved the panels at the copa and SH printer. A world bulider moved the whole printer to spite me D:
 	- Commenced Operation Transatlantic Evil Glare directed at said world builder.

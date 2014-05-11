@@ -2,8 +2,8 @@ PRINTER_POSITIONS =
 {
 	Thump_Dump_Printer =
 	{
-		Translation = {241, 920, 0.2122802734375, 0.716064453125, 512.1},
-		Rotation = {axis={x=0,y=0,z=1},angle=327.0},
+		Translation = {241, 920, 0.24128, 0.68261, 512.6708},
+		Rotation = {axis={x=0,y=0,z=1},angle=131.0},
 		LandingPosition =  {246, 915, 0.25436401367188, 0.048828125, 427.65246582031},
 	},
 	
