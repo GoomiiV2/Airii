@@ -31,5 +31,6 @@ LANG = jsontotable([[
 	DROPSHIP_MAP_MARKERS_TT	:	"If enabled a marker will be added to the map for each panel.",
 	PANELSCALE_LBL			:	"Panel scale: ",
 	PANELSCALE_TT			:	"How much to scale the panels",
+    NO_DROPSHIPS            :   "No Dropships detected in range D:"
 }
 ]]);

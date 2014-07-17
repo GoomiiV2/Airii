@@ -17,6 +17,7 @@ xsi:schemaLocation="http://www.red5studios.com/ ../../../../schemas/component.xs
 		<Event name="ON_UI_ENTITY_LOST"				bind="OnEntityLost"/>
 		<Event name="ON_EXIT_ZONE"					bind="OnExitZone"/>
 		<Event name="ON_ENTER_ZONE"					bind="OnEnterZone"/>
+		<Event name="ON_SINVIRONMENT_TOGGLED"		bind="OnSinEnviroToggled" />
 	</Events>
 	
 	<Meshes>
@@ -78,7 +79,14 @@ xsi:schemaLocation="http://www.red5studios.com/ ../../../../schemas/component.xs
 			<StillArt dimensions="top:2; left:100%-147; width:150; height:100%;" style="texture:colors; region:white; tint:#000000; alpha:0.5;"/>
 			<Text name="route" dimensions="top:2; left:3; width:100%-153; height:100%;" class="Entry"/>
 			<Text name="eta" dimensions="top:2; left:100%-150; width:147; height:100%;" class="Entry" style="halign:center;"/>
-		</BluePrint>		
+		</BluePrint>	
+
+        <BluePrint name="NoShips" instantiable="true">
+            <Group name="grp" dimensions="top:50%-16; left:0; width:100%; height:32;">
+                <StillArt dimensions="dock:fill;" style="texture:colors; region:white; tint:#000000; alpha:0.8;"/>
+                <Text name="text" dimensions="dock:fill;" class="Entry" style="halign:center;"/>
+            </Group>
+		</BluePrint>	        
 	</BluePrints>
 
 	<Frames>

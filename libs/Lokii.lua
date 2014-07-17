@@ -185,7 +185,7 @@ function Lokii.RegisterCallback(cb)
 end
 
 function Lokii.LoadWebPack(HOST)
-	local CurrentVersion = Component.GetSetting(PRIVATE.VERSION_ID);
+	--[[local CurrentVersion = Component.GetSetting(PRIVATE.VERSION_ID);
 	PRIVATE.WebRequest({url = HOST .. "/index.json", cb =
 	function(args)
 	
@@ -222,7 +222,7 @@ function Lokii.LoadWebPack(HOST)
 				end});
 			end -- Nest all the things!
 		end
-	end});
+	end});]]
 end -- The end of the ends end end
 
 function PRIVATE.SimpleCopy(orig)
@@ -244,7 +244,7 @@ function PRIVATE.HashCount(tbl)
 end
 
 function PRIVATE.WebRequest(prams)
-	if (HTTP.IsRequestPending()) then
+	--[[if (HTTP.IsRequestPending()) then
 		local delay = math.random(2, 8);
 		if (not prams.tries) then prams.tries = 0; end
 		if (prams.tries < PRIVATE.HTTP_MAX_RETRIES) then
@@ -263,5 +263,5 @@ function PRIVATE.WebRequest(prams)
 				Debug.Error("Error trying to get", prams.url, "Error message:", tostring(err), "Retrying.");
 			end 
 		end);
-	end
+	end]]
 end

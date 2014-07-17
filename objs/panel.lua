@@ -6,6 +6,7 @@ PANEL =
 		Translation	= {x=0,y=0,z=0},
 		Rotation 	= {axis={x=0,y=0,z=1},angle=90},
 		BindTo		= "World",
+        SortOrder   = 15
 	},
 	
 	{
@@ -13,7 +14,7 @@ PANEL =
 		Id			= "RenderTarget",
 		RTGlobal	= true,
 		RT			= {width=1024, height=1024},
-		Widget		= 	[[<Group dimensions="dock:fill;" style="alpha:1.0">
+		Widget		= 	[[<Group dimensions="dock:fill;" style="alpha:1.0" style="eatsmice:false;">
 							<!--<Stillart id="Face" dimensions="dock:fill" style="texture:colors; region:white"/>-->
 							<Animation name="mesh" dimensions="dock:fill" mesh="PanelMesh" style="texture:colors; region:white; tint:0AB5CF; alpha:0.8;" />
 							<Animation name="PanelScanlinesOpen" dimensions="dock:fill;" mesh="PanelScanlinesOpen" style="texture:PanelTex; region:ScanLines; tint:000000; alpha:0.3;" />
@@ -23,12 +24,15 @@ PANEL =
 								<Group name="Arrivals" dimensions="top:56; center-x:50%; width:100%; height:50%-56;" style="clip-children:true;">
 								
 								</Group>
-								
+								<Group name="ArrivalsNoShip" dimensions="top:56; center-x:50%; width:100%; height:50%-56;" blueprint="NoShips"/>
+                                
 								<Group name="DepartHeader" blueprint="ArriveDepartHeader" dimensions="top:50%; center-x:50%; width:100%; height:32;"> </Group>
 								<Group name="DepartRouteHeader" blueprint="Header" dimensions="top:50%+32; center-x:50%; width:100%; height:24;"> </Group>
 								<Group name="Departures" dimensions="top:50%+56; center-x:50%; width:100%; height:50%-56;" style="clip-children:true;">
 								
 								</Group>
+                                <Group name="DeparturesNoShip" dimensions="top:50%+56; center-x:50%; width:100%; height:50%-56;" blueprint="NoShips"/>
+                                
 							</Group>
 							
 							<Animation name="AiriiMesh" dimensions="dock:fill;" mesh="PanelAirii" style="texture:PanelTex; region:AiriiSlants; tint:000000; alpha:0.4;" />
@@ -44,5 +48,6 @@ PANEL =
 		CullAlpha	= 0,
 		Anchor		= "pos",
 		RT			= "panel_rt",
+        SortOrder   = 15
 	},
 };

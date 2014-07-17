@@ -65,6 +65,12 @@ local PanelPositions = {};
 local MapMarkers = {};
 local EnablePrinterPanels = true;
 local IsInZone = true;
+local NotInRangeMsgs = 
+{
+    Arrivals = nil,
+    Departures = nil
+}
+local isInSinEnviro = false; -- Hack to hide stuff so we don't block the inputs, because sort order does nothing :/
 
 --=====================
 --		Events       --
@@ -115,6 +121,20 @@ end
 function OnPlayerReady(args)
 	CB_Update = Callback2.CreateCycle(UpdateDropships, nil);
 	CB_Update:Run(UPDATE_INTERVAL);
+end
+
+function OnSinEnviroToggled(args)
+	-- Ok so this is hacky and I do sorta kind feel bad buuuut, I jsut want to have this fixed fast soooooo, don't judge pleaseeee, 'kay?
+	isInSinEnviro = not isInSinEnviro;
+	
+	if (isInSinEnviro == true) then
+		RemovePanels();
+		log("Panels Removed");
+	else
+		CreatePanels();
+		ClosePanel();
+		log("Panels Added");
+	end
 end
 
 --=====================
@@ -171,6 +191,12 @@ function CreatePanels()
 	RenderTarget:GetChild("content"):GetChild("DepartRouteHeader"):GetChild("route"):SetText(Lokii.GetString("ROUTE"));
 	RenderTarget:GetChild("content"):GetChild("DepartRouteHeader"):GetChild("eta"):SetText(Lokii.GetString("ETA"));
 	SetArriveDepartHeaders("");
+    
+    NotInRangeMsgs.Arrivals = RenderTarget:GetChild("content"):GetChild("ArrivalsNoShip"):GetChild("grp");
+    NotInRangeMsgs.Departures = RenderTarget:GetChild("content"):GetChild("DeparturesNoShip"):GetChild("grp");
+    
+    NotInRangeMsgs.Arrivals:GetChild("text"):SetText(Lokii.GetString("NO_DROPSHIPS"));
+    NotInRangeMsgs.Departures:GetChild("text"):SetText(Lokii.GetString("NO_DROPSHIPS"));
 end
 
 function RemovePanels()
@@ -223,6 +249,10 @@ function UpdateDropships()
 			end
 		end
 	end
+    
+    -- Hacky or smart?
+    NotInRangeMsgs.Arrivals:Show(ArriveHeight == 0);
+    NotInRangeMsgs.Departures:Show(DepartHeight == 0);
 	
 	SetArriveDepartHeaders(PoiName);
 	
